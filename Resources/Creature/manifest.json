@@ -1,0 +1,30 @@
+{
+  "sizePixels": 56,
+  "sizePoints": 28,
+  "sequences": {
+    "awake": {
+      "fps": 30,
+      "frameCount": 72,
+      "loop": true,
+      "duration": 2.4
+    },
+    "sleep": {
+      "fps": 30,
+      "frameCount": 120,
+      "loop": true,
+      "duration": 4
+    },
+    "wake": {
+      "fps": 30,
+      "frameCount": 102,
+      "loop": false,
+      "duration": 3.4
+    },
+    "settle": {
+      "fps": 30,
+      "frameCount": 138,
+      "loop": false,
+      "duration": 4.6
+    }
+  }
+}

@@ -1,0 +1,6 @@
+Tool: built-in image_gen. Mode: generation with references. Use: illustrative GitHub README cover, not a screenshot.
+
+References 1–2: the exact approved Wakey awake and sleeping marks. Preserve the rounded pear/blob shape with upper-left ear-like tuft, two vertical eyes and smile, and the low sleeping contour with closed curved eyes and Z.
+References 3–4: user-approved Pinterest style references, used only for broad visual direction: very large rounded black typography, expressive pastel shapes, fine tactile grain, oversized cropped characters, and asymmetric hierarchy. Do not reuse their brands, characters, phones or interfaces.
+
+Landscape 16:9. Warm off-white/pale blush canvas. Very large black lowercase word “wakey” in friendly extra-heavy rounded sans at upper left. One oversized mint-green awake Wakey at right, partially cropped, with subtle volume and fine grain. One much smaller butter-yellow sleeping Wakey near lower left. Restrained rose and pale lavender areas shape the composition. One supporting line only: “Keep your Mac awake.” No laptop, phone, app tiles, cards, buttons, badges, ratings, or extra copy.

@@ -1,0 +1,9 @@
+.DS_Store
+.build/
+dist/
+*.dSYM/
+*.xcuserstate
+.env
+*.p12
+*.pfx
+*.key
