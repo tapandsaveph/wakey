@@ -12,6 +12,17 @@ A compiled Wakey app does not need Xcode on the user's Mac. Xcode is a build-tim
 
 Keep local `--preview` packages separate from explicitly labeled `--experimental` test releases. A DMG alone does not solve signing or Gatekeeper acceptance. Development signing is not a substitute for Developer ID distribution; fresh-Mac acceptance remains unverified.
 
+## Packaging tools (maintainers only)
+
+Use Python 3.10+ to install the pinned DMG-layout tools once:
+
+```bash
+python3 -m venv .build/dmg-tools
+.build/dmg-tools/bin/pip install -r packaging/requirements.txt
+```
+
+The DMG opens a fixed icon view with Wakey on the left, Applications on the right, and an embedded Retina background. End users need neither Python nor these tools.
+
 ## Local preview
 
 ```bash
@@ -45,15 +56,15 @@ The maintainer needs Apple Developer Program access to create a **Developer ID A
 3. Submit the resulting DMG with an already-configured notarytool Keychain profile:
 
    ```bash
-   xcrun notarytool submit dist/Wakey-0.2.0-arm64.dmg \
+   xcrun notarytool submit dist/Wakey-0.2.1-arm64.dmg \
      --keychain-profile YOUR_NOTARY_PROFILE --wait
    ```
 
 4. Only after Apple reports **Accepted**, staple and validate the ticket:
 
    ```bash
-   xcrun stapler staple dist/Wakey-0.2.0-arm64.dmg
-   xcrun stapler validate dist/Wakey-0.2.0-arm64.dmg
+   xcrun stapler staple dist/Wakey-0.2.1-arm64.dmg
+   xcrun stapler validate dist/Wakey-0.2.1-arm64.dmg
    ```
 
 5. Test a browser-downloaded copy on a separate Mac: drag-to-Applications, first launch, helper approval, both toggle directions, error handling, and removal. Include the oldest supported OS before calling that OS runtime-tested. Publish the verified artifact and its checksum as a GitHub release asset.

@@ -2,7 +2,7 @@
 
 ![Wakey: Keep your Mac awake. Mint awake creature and smaller yellow sleeping creature.](docs/media/hero.png)
 
-**[Download experimental DMG](https://github.com/tapandsaveph/wakey/releases/download/v0.2.0-preview.1/Wakey-0.2.0-universal-experimental.dmg)** · [How it works](#use) · [Build & contribute](CONTRIBUTING.md)
+**[Download experimental DMG](https://github.com/tapandsaveph/wakey/releases/download/v0.2.1-preview.1/Wakey-0.2.1-universal-experimental.dmg)** · [How it works](#use) · [Build & contribute](CONTRIBUTING.md)
 
 ![Wakey on duty prevents system sleep; off duty allows normal sleep.](docs/media/states.png)
 

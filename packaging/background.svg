@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 720 420">
+<defs><linearGradient id="wash" x1="0" y1="0" x2="1" y2=".6"><stop stop-color="#fbe5eb"/><stop offset="1" stop-color="#d9c6f6"/></linearGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".6" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".055"/></feComponentTransfer><feBlend in="SourceGraphic" mode="multiply"/></filter></defs>
+<g filter="url(#grain)"><rect width="720" height="420" fill="url(#wash)"/><path d="M0 310Q200 250 405 420H0Z" fill="#f3bdd7" opacity=".7"/><path d="M570 0H720V285Q440 190 570 0Z" fill="#cbb0f2" opacity=".55"/></g>
+<text x="360" y="77" text-anchor="middle" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="31" letter-spacing="-.8" fill="#211d27">Drag Wakey to Applications</text>
+<path d="M311 235H411M395 219L411 235 395 251" fill="none" stroke="#3d334c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
