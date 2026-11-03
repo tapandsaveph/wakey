@@ -3,9 +3,9 @@ from pathlib import Path
 root = Path(defines['root'])
 application = defines['app']
 notice = defines['notice']
-files = [application, notice]
+files = [application, notice, str(root / 'Open Privacy & Security.inetloc')]
 symlinks = {'Applications': '/Applications'}
-hide = [Path(notice).name]
+hide = [Path(notice).name, 'Open Privacy & Security.inetloc']
 background = str(root / 'background.png')
 format = 'UDZO'
 filesystem = 'HFS+'

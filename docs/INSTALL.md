@@ -9,8 +9,8 @@ This is a development-signed, **unnotarized test release**. Installation on a fr
 ## Install
 
 1. Open the DMG and drag **Wakey.app** to **Applications**.
-2. Open **Wakey** from Applications. If macOS blocks it as unnotarized, review the app/source and use **System Settings → Privacy & Security → Open Anyway** if macOS offers it. The user makes this approval.
-3. Enable **Wakey** in **System Settings → General → Login Items** (or **Login Items & Extensions**) under **Allow in the Background / Background App Activity**, then complete the administrator approval.
+2. Open **Wakey** from Applications. If macOS blocks it as unnotarized, click **Done**, then use **System Settings → Privacy & Security**. The DMG also contains a hidden **Open Privacy & Security.inetloc** fallback (press **Command–Shift–.** in Finder to reveal hidden files). This shortcut opens the settings page; find Wakey’s blocked-app message (you may need to scroll) and click **Open Anyway** if macOS offers it. Review the app/source before approving. You make the approval yourself. The shortcut does not launch Wakey or change security settings. If the shortcut does not open the page on your macOS version, use **System Settings → Privacy & Security**.
+3. Wakey opens a setup guide after its first launch. Click **Open Login Items**, then enable **Wakey** in **System Settings → General → Login Items** (or **Login Items & Extensions**) under **Allow in the Background / Background App Activity**, then complete the administrator approval. The guide updates automatically when macOS reports approval. Click **Done**, then use the menu-bar icon.
 4. Left-click the creature to toggle. Right-click it for Quit.
 
 The helper is still required: it provides the same system-wide `pmset disablesleep` override as the source build. There is no per-toggle password after setup. Quitting leaves the sleep setting in place; switch Wakey off first to restore normal sleep behavior.

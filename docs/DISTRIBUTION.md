@@ -21,7 +21,7 @@ python3 -m venv .build/dmg-tools
 .build/dmg-tools/bin/pip install -r packaging/requirements.txt
 ```
 
-The DMG opens a fixed icon view with Wakey on the left, Applications on the right, and an embedded Retina background. End users need neither Python nor these tools.
+The DMG opens a fixed icon view with Wakey on the left, Applications on the right, and an embedded Retina background. An **Open Privacy & Security** internet-location shortcut is hidden from the installer’s main view (Command–Shift–. reveals it). It opens the settings page after a blocked launch; users still approve Wakey manually. End users need neither Python nor these tools. Test this shortcut on each supported macOS version; opening the page does not guarantee that macOS offers Open Anyway.
 
 ## Local preview
 

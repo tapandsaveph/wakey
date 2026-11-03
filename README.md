@@ -2,7 +2,7 @@
 
 ![Wakey: Keep your Mac awake. Mint awake creature and smaller yellow sleeping creature.](docs/media/hero.png)
 
-**[Download experimental DMG](https://github.com/tapandsaveph/wakey/releases/download/v0.2.1-preview.1/Wakey-0.2.1-universal-experimental.dmg)** · [How it works](#use) · [Build & contribute](CONTRIBUTING.md)
+**[Download experimental DMG](https://github.com/tapandsaveph/wakey/releases/download/v0.2.1-preview.2/Wakey-0.2.1-universal-experimental.dmg)** · [How it works](#use) · [Build & contribute](CONTRIBUTING.md)
 
 ![Wakey on duty prevents system sleep; off duty allows normal sleep.](docs/media/states.png)
 
@@ -12,7 +12,7 @@ Use Wakey when a long-running job needs your Mac to stay awake.
 
 **macOS 13 Ventura+ target · Universal Apple Silicon + Intel build**
 
-Download the experimental DMG from [Releases](https://github.com/tapandsaveph/wakey/releases), drag Wakey to Applications, and open it. **No Xcode needed.** Complete macOS's unnotarized-app approval if offered, then approve Wakey's background helper once. [Full installation and coding-agent instructions](docs/INSTALL.md).
+Download the experimental DMG from [Releases](https://github.com/tapandsaveph/wakey/releases), drag Wakey to Applications, and open it. **No Xcode needed.** Complete macOS's unnotarized-app approval if offered, then follow Wakey’s setup guide to approve its background helper once. [Full installation and coding-agent instructions](docs/INSTALL.md).
 
 This test release uses an Apple Development signature and is not notarized. Fresh-Mac installation, Intel execution and older-OS runtime behavior remain unverified; macOS may still reject the app/helper. It retains the same system-wide sleep override, animations, one-click toggle and right-click Quit.
 
@@ -33,7 +33,7 @@ Build on a Mac that supports Xcode 26+, with Swift 6.2+ and your own Apple signi
    open /Applications/Wakey.app
    ```
 
-4. In the System Settings page that opens, enable **Wakey** under **General → Login Items & Extensions → Background App Activity**. Complete the administrator approval.
+4. In Wakey’s setup guide, click **Open Login Items**, then enable **Wakey** under **General → Login Items & Extensions → Background App Activity**. Complete the administrator approval.
 
 If several signing identities are installed, see [choosing a certificate](CONTRIBUTING.md#signing).
 
