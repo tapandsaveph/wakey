@@ -52,4 +52,6 @@ For UI changes, check the actual menu bar at normal size, both idle poses, inter
 
 ## DMG packaging
 
-See [distribution](docs/DISTRIBUTION.md) for local previews and the Developer ID/notarization steps required before a public download. Users of a future signed release will not need Xcode.
+See [distribution](docs/DISTRIBUTION.md) for experimental unnotarized testing and the separate Developer ID/notarization path. Users of the prebuilt experimental DMG do not need Xcode.
+
+To compile both architectures, use `BUILD_ARCHS="arm64 x86_64" ./scripts/build.sh`. Keep the helper architecture set identical to the app. Use `--experimental` packaging only for clearly labeled, unnotarized test releases.

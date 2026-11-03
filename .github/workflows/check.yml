@@ -10,4 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Compile and check native assets
+        env:
+          BUILD_ARCHS: "arm64 x86_64"
         run: ./scripts/check.sh

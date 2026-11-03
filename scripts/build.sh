@@ -38,9 +38,19 @@ trap 'rm -rf "$STAGING"' EXIT
 APP="$STAGING/Wakey.app"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources/Creature" "$APP/Contents/Library/LaunchDaemons"
 MINIMUM_MACOS=$(/usr/libexec/PlistBuddy -c "Print :LSMinimumSystemVersion" Resources/Info.plist)
-TARGET="$(uname -m)-apple-macosx${MINIMUM_MACOS}"
-xcrun swiftc -parse-as-library -swift-version 6 -O -target "$TARGET" "$BUILD/BuildIdentity.swift" Sources/HelperProtocol.swift Sources/SleepHelper.swift -o "$APP/Contents/MacOS/SleepHelper"
-xcrun swiftc -parse-as-library -swift-version 6 -O -target "$TARGET" "$BUILD/BuildIdentity.swift" Sources/HelperProtocol.swift Sources/Power.swift Sources/CreatureAnimator.swift Sources/Wakey.swift -o "$APP/Contents/MacOS/Wakey"
+APP_BINARIES=()
+HELPER_BINARIES=()
+for ARCH in ${BUILD_ARCHS:-$(uname -m)}; do
+  case "$ARCH" in arm64|x86_64) ;; *) echo "Unsupported architecture: $ARCH" >&2; exit 2 ;; esac
+  TARGET="$ARCH-apple-macosx${MINIMUM_MACOS}"
+  mkdir -p "$STAGING/$ARCH"
+  HELPER_BINARIES+=("$STAGING/$ARCH/SleepHelper")
+  APP_BINARIES+=("$STAGING/$ARCH/Wakey")
+  xcrun swiftc -parse-as-library -swift-version 6 -O -target "$TARGET" "$BUILD/BuildIdentity.swift" Sources/HelperProtocol.swift Sources/SleepHelper.swift -o "$STAGING/$ARCH/SleepHelper"
+  xcrun swiftc -parse-as-library -swift-version 6 -O -target "$TARGET" "$BUILD/BuildIdentity.swift" Sources/HelperProtocol.swift Sources/Power.swift Sources/CreatureAnimator.swift Sources/Wakey.swift -o "$STAGING/$ARCH/Wakey"
+done
+lipo -create "${HELPER_BINARIES[@]}" -output "$APP/Contents/MacOS/SleepHelper"
+lipo -create "${APP_BINARIES[@]}" -output "$APP/Contents/MacOS/Wakey"
 cp Resources/Info.plist "$APP/Contents/Info.plist"
 cp Resources/app.wakey.mac.helper.plist "$APP/Contents/Library/LaunchDaemons/"
 # Copy only manifest-owned assets; synced folders can contain conflict duplicates.

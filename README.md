@@ -2,7 +2,7 @@
 
 ![Wakey: Keep your Mac awake. Mint awake creature and smaller yellow sleeping creature.](docs/media/hero.png)
 
-**[Install from source ↓](#install)** · [How it works](#use) · [Build & contribute](CONTRIBUTING.md)
+**[Download experimental DMG](https://github.com/tapandsaveph/wakey/releases/download/v0.2.0-preview.1/Wakey-0.2.0-universal-experimental.dmg)** · [How it works](#use) · [Build & contribute](CONTRIBUTING.md)
 
 ![Wakey on duty prevents system sleep; off duty allows normal sleep.](docs/media/states.png)
 
@@ -10,11 +10,16 @@ Use Wakey when a long-running job needs your Mac to stay awake.
 
 ## Install
 
-**Runtime target: macOS 13 Ventura+ · Source build: Xcode 26+ / Swift 6.2+**
+**macOS 13 Ventura+ target · Universal Apple Silicon + Intel build**
 
-A public DMG download is not available yet. A prebuilt DMG will let users install without Xcode; it needs Developer ID signing and Apple notarization first. [Packaging status and steps](docs/DISTRIBUTION.md).
+Download the experimental DMG from [Releases](https://github.com/tapandsaveph/wakey/releases), drag Wakey to Applications, and open it. **No Xcode needed.** Complete macOS's unnotarized-app approval if offered, then approve Wakey's background helper once. [Full installation and coding-agent instructions](docs/INSTALL.md).
 
-For now, build with your own Apple signing identity on a Mac that supports Xcode 26+. The installed app targets macOS 13+; the build computer needs a newer OS.
+This test release uses an Apple Development signature and is not notarized. Fresh-Mac installation, Intel execution and older-OS runtime behavior remain unverified; macOS may still reject the app/helper. It retains the same system-wide sleep override, animations, one-click toggle and right-click Quit.
+
+<details>
+<summary>Build from source instead</summary>
+
+Build on a Mac that supports Xcode 26+, with Swift 6.2+ and your own Apple signing identity.
 
 1. Install Xcode, open it once, and select it in **Xcode → Settings → Locations → Command Line Tools**.
 2. In **Xcode → Settings → Accounts**, add your Apple account. Under **Manage Certificates**, create an **Apple Development** certificate if you don’t already have one.
@@ -30,7 +35,9 @@ For now, build with your own Apple signing identity on a Mac that supports Xcode
 
 4. In the System Settings page that opens, enable **Wakey** under **General → Login Items & Extensions → Background App Activity**. Complete the administrator approval.
 
-That approval lets Wakey change the sleep setting without asking for a password on every click. If several signing identities are installed, see [choosing a certificate](CONTRIBUTING.md#signing).
+If several signing identities are installed, see [choosing a certificate](CONTRIBUTING.md#signing).
+
+</details>
 
 ## Use
 
