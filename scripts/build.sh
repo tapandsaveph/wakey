@@ -37,7 +37,8 @@ STAGING=$(mktemp -d /private/tmp/wakey-build.XXXXXX)
 trap 'rm -rf "$STAGING"' EXIT
 APP="$STAGING/Wakey.app"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources/Creature" "$APP/Contents/Library/LaunchDaemons"
-TARGET="$(uname -m)-apple-macosx26.0"
+MINIMUM_MACOS=$(/usr/libexec/PlistBuddy -c "Print :LSMinimumSystemVersion" Resources/Info.plist)
+TARGET="$(uname -m)-apple-macosx${MINIMUM_MACOS}"
 xcrun swiftc -parse-as-library -swift-version 6 -O -target "$TARGET" "$BUILD/BuildIdentity.swift" Sources/HelperProtocol.swift Sources/SleepHelper.swift -o "$APP/Contents/MacOS/SleepHelper"
 xcrun swiftc -parse-as-library -swift-version 6 -O -target "$TARGET" "$BUILD/BuildIdentity.swift" Sources/HelperProtocol.swift Sources/Power.swift Sources/CreatureAnimator.swift Sources/Wakey.swift -o "$APP/Contents/MacOS/Wakey"
 cp Resources/Info.plist "$APP/Contents/Info.plist"

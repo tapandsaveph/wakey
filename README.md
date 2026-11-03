@@ -10,9 +10,11 @@ Use Wakey when a long-running job needs your Mac to stay awake.
 
 ## Install
 
-**Source build · macOS 26+ · Xcode 26+ / Swift 6.2+**
+**Runtime target: macOS 13 Ventura+ · Source build: Xcode 26+ / Swift 6.2+**
 
-A signed, notarized download is not available yet. Build locally with your own Apple signing identity; the privileged helper cannot work in an unsigned build.
+A public DMG download is not available yet. A prebuilt DMG will let users install without Xcode; it needs Developer ID signing and Apple notarization first. [Packaging status and steps](docs/DISTRIBUTION.md).
+
+For now, build with your own Apple signing identity on a Mac that supports Xcode 26+. The installed app targets macOS 13+; the build computer needs a newer OS.
 
 1. Install Xcode, open it once, and select it in **Xcode → Settings → Locations → Command Line Tools**.
 2. In **Xcode → Settings → Accounts**, add your Apple account. Under **Manage Certificates**, create an **Apple Development** certificate if you don’t already have one.
@@ -69,6 +71,6 @@ No Dock window, subscription, web runtime, or `sudoers` changes. [Security detai
 
 The checks compile both executables, test sleep-state parsing and failure handling, load all 432 animation frames, verify transition routing, and verify the local code signatures. The check build is ad-hoc signed and cannot register the helper.
 
-Tested on Apple Silicon. Intel builds are not yet verified. Background-helper approval and physical sleep behavior require testing on a real Mac; CI cannot approve them.
+App and helper compile for macOS 13 on Apple Silicon and Intel, with both binaries declaring a 13.0 minimum. Runtime checks have only run on a newer Apple Silicon Mac. Ventura, Sonoma, Sequoia, and Intel execution remain unverified. Helper approval and physical sleep behavior require testing on real hardware; CI cannot approve them.
 
 [Contributing](CONTRIBUTING.md) · [Artwork & visual sources](docs/ASSETS.md) · [MIT license](LICENSE)
