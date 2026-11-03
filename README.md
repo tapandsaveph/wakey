@@ -1,14 +1,12 @@
 # Wakey
 
-A tiny animated menu-bar companion that keeps your Mac awake with one click.
-
 ![Wakey: Keep your Mac awake. Mint awake creature and smaller yellow sleeping creature.](docs/media/hero.png)
 
 **[Install from source ↓](#install)** · [How it works](#use) · [Build & contribute](CONTRIBUTING.md)
 
 ![Wakey on duty prevents system sleep; off duty allows normal sleep.](docs/media/states.png)
 
-Wakey is useful when a long-running task needs your Mac to stay awake. Left-click its creature to toggle system sleep prevention. It squishes when awake, breathes with drifting Zs when off, and changes posture between states.
+Use Wakey when a long-running job needs your Mac to stay awake.
 
 ## Install
 
@@ -39,8 +37,6 @@ That approval lets Wakey change the sleep setting without asking for a password 
 | Left-click | Toggle sleep prevention |
 | Right-click → Quit | Close Wakey |
 | Hover | Read the current state or an error |
-
-**Awake creature:** system sleep is prevented. **Sleeping creature:** your normal sleep settings are allowed; the Mac is not immediately put to sleep.
 
 Quitting keeps the current system setting. Switch Wakey off first if you want normal sleep. Other apps and your existing power settings can still keep the Mac awake.
 
