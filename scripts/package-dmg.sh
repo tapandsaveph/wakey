@@ -29,7 +29,7 @@ if [[ "$EXPERIMENTAL" == 1 ]]; then
     echo 'Experimental builds still require an Apple-issued signature; ad-hoc builds cannot use this helper.' >&2; exit 1
   fi
   codesign --verify --test-requirement '=anchor apple generic and identifier "app.wakey.mac"' "$APP"
-  codesign --verify --test-requirement '=anchor apple generic and identifier "app.wakey.mac.helper"' "$APP/Contents/MacOS/SleepHelper"
+  codesign --verify --test-requirement '=anchor apple generic and identifier "app.wakey.mac.helper.distribution"' "$APP/Contents/MacOS/SleepHelper"
 fi
 VERSION=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Contents/Info.plist")
 ARCH=$(lipo -archs "$APP/Contents/MacOS/Wakey" | tr ' ' '-')

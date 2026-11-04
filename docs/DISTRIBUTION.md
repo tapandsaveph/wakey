@@ -8,7 +8,7 @@ A compiled Wakey app does not need Xcode on the user's Mac. Xcode is a build-tim
 - App and helper compile for both Apple Silicon and Intel at that target.
 - Older-OS and Intel runtime behavior still need real-device verification.
 - Experimental, unnotarized DMGs can be published for testing without requiring users to install Xcode.
-- A public, notarized DMG is not yet available. The current development setup has an Apple Development identity, not a Developer ID Application distribution identity.
+- Wakey 0.2.5 is available as a notarized universal DMG signed with Developer ID Application.
 
 Keep local `--preview` packages separate from explicitly labeled `--experimental` test releases. A DMG alone does not solve signing or Gatekeeper acceptance. Development signing is not a substitute for Developer ID distribution; fresh-Mac acceptance remains unverified.
 
@@ -56,15 +56,15 @@ The maintainer needs Apple Developer Program access to create a **Developer ID A
 3. Submit the resulting DMG with an already-configured notarytool Keychain profile:
 
    ```bash
-   xcrun notarytool submit dist/Wakey-0.2.1-arm64.dmg \
+   xcrun notarytool submit dist/Wakey-0.2.5-arm64.dmg \
      --keychain-profile YOUR_NOTARY_PROFILE --wait
    ```
 
 4. Only after Apple reports **Accepted**, staple and validate the ticket:
 
    ```bash
-   xcrun stapler staple dist/Wakey-0.2.1-arm64.dmg
-   xcrun stapler validate dist/Wakey-0.2.1-arm64.dmg
+   xcrun stapler staple dist/Wakey-0.2.5-arm64.dmg
+   xcrun stapler validate dist/Wakey-0.2.5-arm64.dmg
    ```
 
 5. Test a browser-downloaded copy on a separate Mac: drag-to-Applications, first launch, helper approval, both toggle directions, error handling, and removal. Include the oldest supported OS before calling that OS runtime-tested. Publish the verified artifact and its checksum as a GitHub release asset.

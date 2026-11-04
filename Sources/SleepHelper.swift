@@ -4,7 +4,7 @@ import OSLog
 
 final class SleepHelper: NSObject, SleepHelperProtocol, NSXPCListenerDelegate {
     private let lock = NSLock()
-    private let logger = Logger(subsystem: "app.wakey.mac.helper", category: "Sleep")
+    private let logger = Logger(subsystem: "app.wakey.mac.helper.distribution", category: "Sleep")
 
     private func isConsoleUser(_ connection: NSXPCConnection) -> Bool {
         var uid: uid_t = 0

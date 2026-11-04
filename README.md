@@ -2,7 +2,7 @@
 
 ![Wakey: Keep your Mac awake. Mint awake creature and smaller yellow sleeping creature.](docs/media/hero.png)
 
-**[Download experimental DMG](https://github.com/tapandsaveph/wakey/releases/download/v0.2.1-preview.2/Wakey-0.2.1-universal-experimental.dmg)** · [How it works](#use) · [Build & contribute](CONTRIBUTING.md)
+**[Download Wakey 0.2.5](https://github.com/tapandsaveph/wakey/releases/download/v0.2.5/Wakey-0.2.5-universal.dmg)** · [How it works](#use) · [Build & contribute](CONTRIBUTING.md)
 
 ![Wakey on duty prevents system sleep; off duty allows normal sleep.](docs/media/states.png)
 
@@ -12,9 +12,9 @@ Use Wakey when a long-running job needs your Mac to stay awake.
 
 **macOS 13 Ventura+ target · Universal Apple Silicon + Intel build**
 
-Download the experimental DMG from [Releases](https://github.com/tapandsaveph/wakey/releases), drag Wakey to Applications, and open it. **No Xcode needed.** Complete macOS's unnotarized-app approval if offered, then follow Wakey’s setup guide to approve its background helper once. [Full installation and coding-agent instructions](docs/INSTALL.md).
+Download the notarized DMG, drag Wakey to Applications, and open it. Follow the setup guide if macOS asks you to approve the background helper. [Installation and update instructions](docs/INSTALL.md).
 
-This test release uses an Apple Development signature and is not notarized. Fresh-Mac installation, Intel execution and older-OS runtime behavior remain unverified; macOS may still reject the app/helper. It retains the same system-wide sleep override, animations, one-click toggle and right-click Quit.
+The universal build targets macOS 13 and later. The toggle was verified on Apple Silicon. Intel and older macOS runtime testing remain outstanding.
 
 <details>
 <summary>Build from source instead</summary>

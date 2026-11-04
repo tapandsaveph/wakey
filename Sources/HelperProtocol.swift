@@ -5,8 +5,8 @@ import Foundation
 }
 
 enum HelperConfiguration {
-    static let service = "app.wakey.mac.helper"
-    static let plist = "app.wakey.mac.helper.plist"
+    static let service = "app.wakey.mac.helper.distribution"
+    static let plist = "app.wakey.mac.helper.distribution.plist"
     static func requirement(identifier: String) -> String {
         "anchor apple generic and certificate leaf = H\"\(BuildIdentity.certificate)\" and identifier \"\(identifier)\""
     }

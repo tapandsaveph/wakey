@@ -15,14 +15,14 @@ import OSLog
             self.connection = connection
             connection.remoteObjectInterface = NSXPCInterface(with: SleepHelperProtocol.self)
             connection.setCodeSigningRequirement(HelperConfiguration.requirement(identifier: HelperConfiguration.service))
-            connection.invalidationHandler = { [weak self] in
+            connection.invalidationHandler = { @Sendable [weak self] in
                 Task { @MainActor in self?.finish("Helper unavailable. Check its approval in System Settings.") }
             }
-            connection.interruptionHandler = { [weak self] in
+            connection.interruptionHandler = { @Sendable [weak self] in
                 Task { @MainActor in self?.finish("The helper disconnected. Try again.") }
             }
             connection.resume()
-            let proxy = connection.remoteObjectProxyWithErrorHandler { [weak self] _ in
+            let proxy = connection.remoteObjectProxyWithErrorHandler { @Sendable [weak self] _ in
                 Task { @MainActor in self?.finish("Helper unavailable. Check its approval in System Settings.") }
             } as? SleepHelperProtocol
             guard let proxy else { finish("Couldn’t connect to the helper."); return }
@@ -68,12 +68,12 @@ private struct SetupGuide: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Label(approved ? "Wakey is approved" : "One more step for Wakey",
+            Label(approved ? "Wakey is ready" : "One more step for Wakey",
                   systemImage: approved ? "checkmark.circle.fill" : "lock.shield")
                 .font(.title2.bold())
                 .foregroundStyle(approved ? Color.green : Color.primary)
             Text(approved
-                 ? "Setup complete. Click Wakey in the menu bar to turn Keep Awake on or off."
+                 ? "Click Wakey in the menu bar to turn Keep Awake on or off."
                  : "Wakey needs your approval to change the sleep setting. You only need to do this once.")
                 .fixedSize(horizontal: false, vertical: true)
             if !approved {
@@ -155,7 +155,11 @@ private struct SetupGuide: View {
         }
         polling = Task {
             await refresh()
-            if service.status != .enabled { openSetup() }
+            let welcomeKey = "hasShownSetupGuide"
+            if service.status != .enabled || !UserDefaults.standard.bool(forKey: welcomeKey) {
+                openSetup()
+                UserDefaults.standard.set(true, forKey: welcomeKey)
+            }
             while !Task.isCancelled {
                 do { try await Task.sleep(for: .seconds(3)) } catch { return }
                 if !busy { await refresh() }

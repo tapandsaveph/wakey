@@ -5,10 +5,10 @@
 	<key>BundleProgram</key>
 	<string>Contents/MacOS/SleepHelper</string>
 	<key>Label</key>
-	<string>app.wakey.mac.helper</string>
+	<string>app.wakey.mac.helper.distribution</string>
 	<key>MachServices</key>
 	<dict>
-		<key>app.wakey.mac.helper</key>
+		<key>app.wakey.mac.helper.distribution</key>
 		<true/>
 	</dict>
 	<key>ProcessType</key>

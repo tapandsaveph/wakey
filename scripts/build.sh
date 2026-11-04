@@ -52,7 +52,7 @@ done
 lipo -create "${HELPER_BINARIES[@]}" -output "$APP/Contents/MacOS/SleepHelper"
 lipo -create "${APP_BINARIES[@]}" -output "$APP/Contents/MacOS/Wakey"
 cp Resources/Info.plist "$APP/Contents/Info.plist"
-cp Resources/app.wakey.mac.helper.plist "$APP/Contents/Library/LaunchDaemons/"
+cp Resources/app.wakey.mac.helper.distribution.plist "$APP/Contents/Library/LaunchDaemons/"
 # Copy only manifest-owned assets; synced folders can contain conflict duplicates.
 /usr/bin/python3 - "$ROOT" "$APP" <<'PY'
 import json, pathlib, shutil, sys
@@ -69,8 +69,10 @@ shutil.copyfile(source/'manifest.json',target/'manifest.json')
 PY
 if [[ -f Resources/Wakey.icns ]]; then cp Resources/Wakey.icns "$APP/Contents/Resources/"; fi
 xattr -cr "$APP"
-codesign --force --options runtime --sign "$IDENTITY" --identifier app.wakey.mac.helper "$APP/Contents/MacOS/SleepHelper"
-codesign --force --options runtime --sign "$IDENTITY" "$APP"
+TIMESTAMP=()
+if [[ "$CHECK_ONLY" == 0 ]]; then TIMESTAMP=(--timestamp); fi
+codesign --force "${TIMESTAMP[@]}" --options runtime --sign "$IDENTITY" --identifier app.wakey.mac.helper.distribution "$APP/Contents/MacOS/SleepHelper"
+codesign --force "${TIMESTAMP[@]}" --options runtime --sign "$IDENTITY" "$APP"
 codesign --verify --deep --strict "$APP"
 "$APP/Contents/MacOS/Wakey" --check-animation-assets
 mkdir -p dist
@@ -80,7 +82,7 @@ if [[ "$CHECK_ONLY" == 1 ]]; then
   echo 'Check build passed. This ad-hoc build cannot register the privileged helper.'
 else
   codesign --verify --test-requirement "=anchor apple generic and certificate leaf = H\"$CERTIFICATE\" and identifier \"app.wakey.mac\"" "$APP"
-  codesign --verify --test-requirement "=anchor apple generic and certificate leaf = H\"$CERTIFICATE\" and identifier \"app.wakey.mac.helper\"" "$APP/Contents/MacOS/SleepHelper"
+  codesign --verify --test-requirement "=anchor apple generic and certificate leaf = H\"$CERTIFICATE\" and identifier \"app.wakey.mac.helper.distribution\"" "$APP/Contents/MacOS/SleepHelper"
   ditto -c -k --norsrc --keepParent "$APP" dist/Wakey.zip
   echo 'Built dist/Wakey.app. Copy it to /Applications before launching.'
 fi
